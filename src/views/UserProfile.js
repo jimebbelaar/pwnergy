@@ -11,7 +11,7 @@ import UserActivity from "./../components/user-profile/UserActivity";
 const UserProfile = () => (
   <Container fluid className="main-content-container px-4">
     <Row className="mt-4">
-      <Col lg="4" sm="12">
+      <Col lg="4" md="6" sm="6" className="mb-4">
         <UserDetails />
         <UserContact />
         <UserTeams />

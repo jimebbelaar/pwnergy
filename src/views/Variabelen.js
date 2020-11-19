@@ -22,13 +22,13 @@ import PageTitle from "../components/common/PageTitle";
 import RangeDatePicker from "../components/common/RangeDatePicker";
 import getTransactionHistoryData from "../data/transaction-history-data";
 
-class TransactionHistory extends React.Component {
+class Variabelen extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       pageSizeOptions: [5, 10, 15, 20, 25, 30],
-      pageSize: 10,
+      pageSize: 5,
       tableData: []
     };
 
@@ -128,26 +128,41 @@ class TransactionHistory extends React.Component {
         className: "text-center"
       },
       {
-        Header: "Date",
+        Header: "Datum",
         accessor: "date",
         className: "text-center",
-        minWidth: 200,
+        maxWidth: 300,
         Cell: row =>
           dateFormat(new Date(row.original.date), "dddd, mmmm dS, yyyy")
       },
       {
-        Header: "Customer",
-        accessor: "customer",
-        className: "text-center"
+        Header: "Factor",
+        accessor: "factor",
+        className: "text-center",
+        maxWidth: 400,
       },
       {
-        Header: "Products",
-        accessor: "products",
+        Header: "Waarde",
+        accessor: "waarde",
         maxWidth: 100,
         className: "text-center"
       },
       {
-        Header: "Status",
+        Header: "Default verslagjaar 2018",
+        maxWidth: 150,
+        accessor: "default",
+
+        className: "text-center"
+      },
+      {
+        Header: "Eenheid",
+        maxWidth: 150,
+        accessor: "eenheid",
+
+        className: "text-center"
+      },
+      {
+        Header: "status",
         accessor: "status",
         maxWidth: 100,
         Cell: row => (
@@ -157,13 +172,13 @@ class TransactionHistory extends React.Component {
         ),
         className: "text-center"
       },
-      {
-        Header: "Total",
-        accessor: "total",
-        maxWidth: 100,
-        Cell: row => <span className="text-success">{row.original.total}</span>,
-        className: "text-center"
-      },
+      // {
+      //   Header: "Total",
+      //   accessor: "total",
+      //   maxWidth: 100,
+      //   Cell: row => <span className="text-success">{row.original.total}</span>,
+      //   className: "text-center"
+      // },
       {
         Header: "Actions",
         accessor: "actions",
@@ -174,7 +189,7 @@ class TransactionHistory extends React.Component {
           <ButtonGroup size="sm" className="d-table mx-auto">
             <Button theme="white" onClick={() => this.handleItemConfirm(row)}>
               <i className="material-icons">&#xE5CA;</i>
-            </Button>
+            </Button>b
             <Button
               theme="white"
               onClick={() => this.handleItemViewDetails(row)}
@@ -195,12 +210,59 @@ class TransactionHistory extends React.Component {
     return (
       <Container fluid className="main-content-container px-4 pb-4">
         <Row noGutters className="page-header py-4">
-          <PageTitle title="Transaction History" subtitle="Dashboards" className="text-sm-left mb-3" />
+          <PageTitle title="Variabelen" subtitle="Dashboards" className="text-sm-left mb-3" />
           <Col sm="4" className="d-flex ml-auto my-auto">
             <RangeDatePicker className="justify-content-end" />
           </Col>
         </Row>
+        <h5><b>Overzicht CO2-emissiefactoren en overige uitgangswaarden in de berekening van de CO2-voetafdruk</b></h5>
         <Card className="p-0">
+          <CardHeader className="p-0">
+            <Container fluid className="file-manager__filters border-bottom">
+              <Row>
+                {/* Filters :: Page Size */}
+                <Col className="file-manager__filters__rows d-flex" md="6">
+                  <span>Show</span>
+                  <FormSelect
+                    size="sm"
+                    value={this.state.pageSize}
+                    onChange={this.handlePageSizeChange}
+                  >
+                    {pageSizeOptions.map((size, idx) => (
+                      <option key={idx} value={size}>
+                        {size} rows
+                      </option>
+                    ))}
+                  </FormSelect>
+                </Col>
+
+                {/* Filters :: Search */}
+                <Col className="file-manager__filters__search d-flex" md="6">
+                  <InputGroup seamless size="sm" className="ml-auto">
+                    <InputGroupAddon type="prepend">
+                      <InputGroupText>
+                        <i className="material-icons">search</i>
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <FormInput onChange={this.handleFilterSearch} />
+                  </InputGroup>
+                </Col>
+              </Row>
+            </Container>
+          </CardHeader>
+          <CardBody className="p-0">
+            <div className="">
+              <ReactTable
+                columns={tableColumns}
+                data={tableData}
+                pageSize={pageSize}
+                showPageSizeOptions={false}
+                resizable={false}
+              />
+            </div>
+          </CardBody>
+        </Card>
+        <Card className="p-0 mt-4">
           <CardHeader className="p-0">
             <Container fluid className="file-manager__filters border-bottom">
               <Row>
@@ -251,4 +313,4 @@ class TransactionHistory extends React.Component {
   }
 }
 
-export default TransactionHistory;
+export default Variabelen;

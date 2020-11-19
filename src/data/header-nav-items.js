@@ -57,9 +57,9 @@ export default function() {
       ]
     },
     {
-      title: "Transactions",
+      title: "Variabelen",
       htmlBefore: '<i class="material-icons"></i>',
-      to: "/transaction-history"
+      to: "/variabelen"
     },
     {
       title: "User Account",
@@ -70,8 +70,8 @@ export default function() {
           to: "/user-profile"
         },
         {
-          title: "Edit User Profile",
-          to: "/edit-user-profile"
+          title: "Maatregel Toevoegen",
+          to: "/maatregel-toevoegen"
         },
         {
           title: "Login",

@@ -10,14 +10,14 @@ import OnlineStore from "./views/OnlineStore";
 import BlogOverview from "./views/BlogOverview";
 import UserProfile from "./views/UserProfile";
 import UserProfileLite from "./views/UserProfileLite";
-import EditUserProfile from "./views/EditUserProfile";
+import MaatregelToevoegen from "./views/MaatregelToevoegen";
 import Login from "./views/Login";
 import Register from "./views/Register";
 import ForgotPassword from "./views/ForgotPassword";
 import ChangePassword from "./views/ChangePassword";
 import FileManagerList from "./views/FileManagerList";
 import FileManagerCards from "./views/FileManagerCards";
-import TransactionHistory from "./views/TransactionHistory";
+import TransactionHistory from "./views/Variabelen";
 import Calendar from "./views/Calendar";
 import AddNewPost from "./views/AddNewPost";
 import Errors from "./views/Errors";
@@ -26,6 +26,10 @@ import Tables from "./views/Tables";
 import BlogPosts from "./views/BlogPosts";
 import HeaderNav from "./views/HeaderNavigation";
 import IconSidebarView from "./views/IconSidebar";
+import Variabelen from "./views/Variabelen";
+import AbatementCurve from "./views/AbatementCurve";
+import Benchmark from "./views/Benchmark";
+import SCurve from "./views/SCurve";
 
 const BlankIconSidebarLayout = ({ children }) => (
   <IconSidebar noNavbar noFooter>
@@ -66,9 +70,9 @@ export default [
     component: UserProfileLite
   },
   {
-    path: "/edit-user-profile",
+    path: "/maatregel-toevoegen",
     layout: DefaultLayout,
-    component: EditUserProfile
+    component: MaatregelToevoegen
   },
   {
     path: "/login",
@@ -101,9 +105,9 @@ export default [
     component: FileManagerCards
   },
   {
-    path: "/transaction-history",
+    path: "/variabelen",
     layout: DefaultLayout,
-    component: TransactionHistory
+    component: Variabelen
   },
   {
     path: "/calendar",
@@ -144,5 +148,20 @@ export default [
     path: "/icon-sidebar-nav",
     layout: IconSidebar,
     component: IconSidebarView
+  },
+  {
+    path: "/benchmark",
+    layout: DefaultLayout,
+    component: Benchmark
+  },
+  {
+    path: "/abatement-curve",
+    layout: DefaultLayout,
+    component: AbatementCurve
+  },
+  {
+    path: "/s-curve",
+    layout: DefaultLayout,
+    component: SCurve
   }
 ];

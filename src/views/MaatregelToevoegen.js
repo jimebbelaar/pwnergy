@@ -25,7 +25,7 @@ import {
 import FormSectionTitle from "../components/edit-user-profile/FormSectionTitle";
 import ProfileBackgroundPhoto from "../components/edit-user-profile/ProfileBackgroundPhoto";
 
-class EditUserProfile extends React.Component {
+class MaatregelToevoegen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -546,4 +546,4 @@ class EditUserProfile extends React.Component {
   }
 }
 
-export default EditUserProfile;
+export default MaatregelToevoegen;

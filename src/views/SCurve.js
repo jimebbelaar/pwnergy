@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Row, Col, Button, ButtonGroup } from "shards-react";
+import {Container, Row, Col, Button, ButtonGroup, CardBody} from "shards-react";
 import { NavLink } from "react-router-dom";
 
 import PageTitle from "../components/common/PageTitle";
@@ -14,8 +14,9 @@ import GoalsOverview from "../components/analytics/GoalsOverview/GoalsOverview";
 
 import colors from "../utils/colors";
 import BenchmarkPie2030 from "../components/analytics/BenchmarkPie2030";
+import SCurveComp from "../components/s-curve/scurve";
 
-const Analytics = ({ smallStats }) => (
+const SCurve = ({ smallStats }) => (
   <Container fluid className="main-content-container px-4">
     <Row noGutters className="page-header py-4">
       {/* Page Header :: Title */}
@@ -59,41 +60,21 @@ const Analytics = ({ smallStats }) => (
 
     <Row>
       {/* Sessions */}
-      <Col lg="8" md="12" sm="12" className="mb-4">
-        <Sessions />
-      </Col>
-
-      {/* Users by Device */}
-      <Col lg="4" md="6" sm="6" className="mb-4">
-        <UsersByDevice />
-      </Col>
-
-      {/* Top Referrals */}
-      <Col lg="3" sm="6" className="mb-4">
-        <TopReferrals />
-      </Col>
-
-      {/* Goals Overview */}
-      <Col lg="5" className="mb-4">
-        <GoalsOverview />
-      </Col>
-
-      {/* Country Reports */}
-      <Col lg="4" className="mb-4">
-        <CountryReports />
+      <Col lg="12" md="12" sm="12" className="mb-4">
+        <SCurveComp />
       </Col>
     </Row>
   </Container>
 );
 
-Analytics.propTypes = {
+SCurve.propTypes = {
   /**
    * The small stats data.
    */
   smallStats: PropTypes.array
 };
 
-Analytics.defaultProps = {
+SCurve.defaultProps = {
   smallStats: [
     {
       label: "Users",
@@ -170,4 +151,4 @@ Analytics.defaultProps = {
   ]
 };
 
-export default Analytics;
+export default SCurve;
